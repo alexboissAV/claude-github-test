@@ -29,7 +29,17 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install common dependencies
+        run: |
+          pip install python-docx pandas openpyxl requests
+
       - name: Run Claude
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          allowed_tools: "Bash(python:*),Bash(python3:*),Bash(pip:*),Bash(pip3:*),Bash(npm:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(mkdir:*),Bash(cp:*),Bash(mv:*)"
