@@ -34,9 +34,35 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install common dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install system dependencies
         run: |
-          pip install python-docx pandas openpyxl requests
+          sudo apt-get update
+          sudo apt-get install -y libreoffice pandoc wkhtmltopdf
+
+      - name: Install Python packages
+        run: |
+          pip install \
+            python-docx \
+            python-pptx \
+            openpyxl \
+            pandas \
+            requests \
+            reportlab \
+            fpdf2 \
+            pillow \
+            matplotlib \
+            seaborn \
+            jinja2 \
+            beautifulsoup4 \
+            PyPDF2 \
+            pdfplumber \
+            markdown \
+            weasyprint
 
       - name: Run Claude
         uses: anthropics/claude-code-action@v1
