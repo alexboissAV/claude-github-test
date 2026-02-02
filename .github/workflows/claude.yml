@@ -42,4 +42,4 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: '--allowedTools "Bash(python:*)" --allowedTools "Bash(python3:*)" --allowedTools "Bash(pip:*)" --allowedTools "Bash(pip3:*)" --allowedTools "Bash(npm:*)" --allowedTools "Bash(node:*)" --allowedTools "Bash(ls:*)" --allowedTools "Bash(cat:*)" --allowedTools "Bash(mkdir:*)" --allowedTools "Bash(cp:*)" --allowedTools "Bash(mv:*)"'
+          allowed_tools: "*"
